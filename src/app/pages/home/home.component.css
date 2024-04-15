@@ -1,0 +1,75 @@
+section {
+    display: table;
+  }
+  
+  .example-label {
+    display: table-cell;
+    font-size: 14px;
+    margin-left: 8px;
+    min-width: 120px;
+  }
+  
+  .example-button-row {
+    display: table-cell;
+    max-width: 600px;
+  }
+  
+  .example-button-row .mat-mdc-button-base {
+    margin: 8px 8px 8px 0;
+  }
+  
+  .example-flex-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .example-button-container {
+    display: flex;
+    justify-content: center;
+    width: 120px;
+  }
+  
+form {
+  max-width: 20rem; 
+}
+
+form div {
+  margin-bottom: 1rem; 
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem; 
+  font-family: 'Montserrat';
+  font-weight:500; 
+  color: #333333; 
+}
+
+input[type="text"] {
+  display: block;
+  width: 100%; 
+  padding: 0.5rem; 
+  font-family: 'Montserrat';
+  font-size: 1rem; 
+  color: #333333;
+  border: 1px solid #cccccc; 
+  border-radius: 0.375rem; 
+  background-color: #ffffff; 
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; 
+}
+
+input[type="text"]:focus {
+  outline: 0; 
+  border-color: #3b82f6; 
+  font-family: 'Montserrat';
+  box-shadow: 0 0 0 0.125rem rgba(59, 130, 246, 0.25);
+}
+
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* Crea dos columnas de igual anchura */
+  gap: 1rem; /* Espacio entre las columnas */
+}
