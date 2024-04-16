@@ -3,23 +3,26 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HomeComponent } from './pages/home/home.component';
 import { PagesComponent } from './pages/pages.component';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { AngularMaterialModule } from './angular-material.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PagesComponent,
+    HomeComponent,
+    PagesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AngularMaterialModule
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
-    provideClientHydration(),
-    provideAnimationsAsync()
+    provideClientHydration()
   ],
   bootstrap: [AppComponent]
 })

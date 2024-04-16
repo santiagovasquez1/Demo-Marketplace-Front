@@ -3,10 +3,11 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ener-chain": {
+    "enerchain": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
+          "style": "sass",
           "standalone": false
         },
         "@schematics/angular:directive": {
@@ -23,20 +24,20 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/ener-chain",
+            "outputPath": "dist/enerchain",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
               "zone.js"
             ],
             "tsConfig": "tsconfig.app.json",
+            "inlineStyleLanguage": "sass",
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
-              "@angular/material/prebuilt-themes/indigo-pink.css",
-              "src/styles.css"
+              "src/styles.sass"
             ],
             "scripts": [],
             "server": "src/main.server.ts",
@@ -79,10 +80,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "ener-chain:build:production"
+              "buildTarget": "enerchain:build:production"
             },
             "development": {
-              "buildTarget": "ener-chain:build:development"
+              "buildTarget": "enerchain:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -90,7 +91,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "ener-chain:build"
+            "buildTarget": "enerchain:build"
           }
         },
         "test": {
@@ -101,13 +102,13 @@
               "zone.js/testing"
             ],
             "tsConfig": "tsconfig.spec.json",
+            "inlineStyleLanguage": "sass",
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
-              "@angular/material/prebuilt-themes/indigo-pink.css",
-              "src/styles.css"
+              "src/styles.sass"
             ],
             "scripts": []
           }
@@ -116,6 +117,6 @@
     }
   },
   "cli": {
-    "analytics": "35d377e7-cc16-40af-ae4f-65a0d6b3285a"
+    "analytics": "1ed2122d-50ba-46b8-9c52-dfdea484a0c0"
   }
 }
