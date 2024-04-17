@@ -7,12 +7,16 @@ import { HomeComponent } from './pages/home/home.component';
 import { PagesComponent } from './pages/pages.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { provideHttpClient } from '@angular/common/http'; 
+import { withFetch } from '@angular/common/http';
+import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    PagesComponent
+    PagesComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +26,8 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
     HttpClientModule
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),
+    provideHttpClient(withFetch())
   ],
   bootstrap: [AppComponent]
 })

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { HomeService } from '../../services/home.service';
+import { SHA256 } from "crypto-js"
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -18,26 +20,32 @@ export class HomeComponent {
       this.createAgent = new FormGroup({
         agent_id: new FormControl("1"),
         NIT: new FormControl(""),
-        company: new FormControl(""),
+        company_name: new FormControl(""),
         contact: new FormControl(""),
         phone: new FormControl(""),
         email: new FormControl(""),
         region: new FormControl("1"),
         city: new FormControl("1"),
-        address: new FormControl(),
+        address: new FormControl(""),
         password: new FormControl(""),
-        password_confirm: new FormControl("")
+        password_validation: new FormControl("")
     });
   }
 
   onSubmit(): void {
     
     let formData = {
-      ...this.createAgent.value,
-      agent_id : parseInt(this.createAgent.value.agent_id),
+      status: 0,
+      NIT: this.createAgent.value.NIT,
+      company_name: this.createAgent.value.company_name,
+      contact: this.createAgent.value.contact,
+      phone: this.createAgent.value.phone,
+      email: this.createAgent.value.email,
       region: parseInt(this.createAgent.value.region),
       city: parseInt(this.createAgent.value.city),
-      status: 0
+      agent_id : parseInt(this.createAgent.value.agent_id),
+      address: this.createAgent.value.address,
+      password: SHA256(this.createAgent.value.password + environment.secret).toString(),
     } 
 
     console.log(formData)
