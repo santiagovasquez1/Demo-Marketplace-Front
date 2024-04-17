@@ -4,6 +4,8 @@ import { PagesComponent } from './pages.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { GeneratorComponent } from './generator/generator.component';
+import { AngularMaterialModule } from '../angular-material.module';
 
 
 
@@ -11,11 +13,13 @@ import { LoginComponent } from './login/login.component';
   declarations: [
     PagesComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    GeneratorComponent
   ],
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularMaterialModule
   ]
 })
 export class PagesModule { }

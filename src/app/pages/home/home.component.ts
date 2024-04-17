@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { HomeService } from '../../services/home.service';
 import { SHA256 } from "crypto-js"
@@ -9,10 +9,49 @@ import { environment } from '../../../environments/environment';
   templateUrl: './home.component.html',
   styleUrl: './home.component.sass'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
 
   createAgent!: FormGroup;
+  agent_types: any = [
+    {
+      id: "1",
+      name: "Generador"
+    },
+    {
+      id: "2",
+      name: "Comercializador"
+    },
+    {
+      id: "3",
+      name: "Transportador"
+    },
+    {
+      id: "4",
+      name: "Distribuidor"
+    }
+]
   
+  ngOnInit(): void {
+    console.log("Starting home component")
+    this.homeService.getRegions()
+    .subscribe({
+      next: (response: any) => {
+        console.log(response)
+      },
+      error : (error: any) => {
+        console.error(error);
+      }});
+
+    this.homeService.getCities(1)
+    .subscribe({
+      next: (response: any) => {
+        console.log(response)
+      },
+      error : (error: any) => {
+        console.error(error);
+      }});
+  }
+
   constructor(
     private formBuilder: FormBuilder,
     private homeService : HomeService,
@@ -48,7 +87,6 @@ export class HomeComponent {
       password: SHA256(this.createAgent.value.password + environment.secret).toString(),
     } 
 
-    console.log(formData)
     if(false) {
 
       this.homeService.sendAgentData(formData)

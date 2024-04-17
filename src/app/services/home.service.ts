@@ -13,7 +13,17 @@ export class HomeService {
   constructor(private http: HttpClient) { }
 
   sendAgentData(body: any): any {
-    const url = `${this.apiUrl}/manage_users/get_project_users`;
+    const url = `${this.apiUrl}/create_user`;
     return this.http.post(url, body);
+  }
+
+  getRegions(): any {
+    const url = `${this.apiUrl}/get_regions`;
+    return this.http.get(url);
+  }
+  
+  getCities(id: number): any {
+    const url = `${this.apiUrl}/get_cities/${id}`;
+    return this.http.get(url);
   }
 }

@@ -10,12 +10,16 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { provideHttpClient } from '@angular/common/http'; 
 import { withFetch } from '@angular/common/http';
 import { LoginComponent } from './pages/login/login.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { GeneratorComponent } from './pages/generator/generator.component';
+import { AngularMaterialModule } from './angular-material.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     PagesComponent,
+    GeneratorComponent,
     LoginComponent
   ],
   imports: [
@@ -23,11 +27,13 @@ import { LoginComponent } from './pages/login/login.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    AngularMaterialModule,
     HttpClientModule
   ],
   providers: [
     provideClientHydration(),
-    provideHttpClient(withFetch())
+    provideHttpClient(withFetch()),
+    provideAnimationsAsync()
   ],
   bootstrap: [AppComponent]
 })

@@ -26,10 +26,7 @@
                   outline: none;
                   width: 100%;
                   padding: 0.625rem;">
-                <option value="1">Generador</option>
-                <option value="2">Comercializador</option>
-                <option value="3">Distribuidor</option>
-                <option value="4">Transportador</option>
+                <option *ngFor="let agent of agent_types" value={{agent.id}}>{{agent.name}}</option>
               </select>
             </div>
           </div>
