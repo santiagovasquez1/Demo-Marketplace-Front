@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -11,20 +11,24 @@ import { provideHttpClient } from '@angular/common/http';
 import { withFetch } from '@angular/common/http';
 import { LoginComponent } from './pages/login/login.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { GeneratorComponent } from './pages/generator/generator.component';
 import { AngularMaterialModule } from './angular-material.module';
+import { AdminComponent } from './pages/user/admin/admin.component';
+import { UserComponent } from './pages/user/user.component';
+import { MatAccordion, MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     PagesComponent,
-    GeneratorComponent,
+    AdminComponent,
+    UserComponent,
     LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MatExpansionModule,
     FormsModule,
     ReactiveFormsModule,
     AngularMaterialModule,
@@ -35,6 +39,7 @@ import { AngularMaterialModule } from './angular-material.module';
     provideHttpClient(withFetch()),
     provideAnimationsAsync()
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

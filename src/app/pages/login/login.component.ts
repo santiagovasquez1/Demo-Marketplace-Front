@@ -28,7 +28,7 @@ export class LoginComponent {
     console.log(this.userInfo.value.password + environment.secret)
     let data = {
       ...this.userInfo.value,
-      password: SHA256(this.userInfo.value.password + environment.secret).toString()
+      password: this.userInfo.value.password
     }
     console.log(data)
   }

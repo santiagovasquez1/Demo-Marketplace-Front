@@ -4,8 +4,10 @@ import { PagesComponent } from './pages.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { GeneratorComponent } from './generator/generator.component';
 import { AngularMaterialModule } from '../angular-material.module';
+import { UserComponent } from './user/user.component';
+import { AdminComponent } from './user/admin/admin.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 
 
@@ -14,11 +16,14 @@ import { AngularMaterialModule } from '../angular-material.module';
     PagesComponent,
     HomeComponent,
     LoginComponent,
-    GeneratorComponent
+    AdminComponent,
+    UserComponent,
+
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    MatExpansionModule,
     AngularMaterialModule
   ]
 })

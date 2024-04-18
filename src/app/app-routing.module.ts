@@ -3,7 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { GeneratorComponent } from './pages/generator/generator.component';
+import { UserComponent } from './pages/user/user.component';
+import { AdminComponent } from './pages/user/admin/admin.component';
 
 const routes: Routes = [
   {
@@ -15,8 +16,12 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
-    path:'generator',
-    component: GeneratorComponent
+    path:'user',
+    component: UserComponent
+  },
+  {
+    path:'admin/:tab',
+    component: AdminComponent
   }
 ];
 

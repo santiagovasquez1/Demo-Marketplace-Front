@@ -2,6 +2,8 @@
     <div style="display: flex; align-items: flex-end; margin-top: 30px; padding-left: 20px; font-weight: 600;">
       <img src="./assets/home/enerchain.svg" alt="Logo not found" height="80px">
     </div>
+    <div>
+    </div>
     <div style="margin-left: 20%; margin-right: 20%;">
       <h1 style="
       text-align: center;
@@ -70,8 +72,9 @@
                 border-radius: 0.375rem;
                 outline: none;
                 width: 100%;
-                padding: 0.625rem;">
-              <option value="1">Antioquia</option>
+                padding: 0.625rem;"
+                (change)="onChangeRegion($event)">
+              <option *ngFor="let region of regions" value={{region.region_id}}>{{region.description}}</option>
             </select>
               </div>
            </div>
@@ -80,18 +83,18 @@
               <div>
                 <label for="small-input">Ciudad</label>
                 <select
-                formControlName="city" 
-                style="
-                background-color: #f7fafc;
-                border: 1px solid #d2d6dc;
-                color: #4b5563;
-                font-size: 0.875rem;
-                border-radius: 0.375rem;
-                outline: none;
-                width: 100%;
-                padding: 0.625rem;">
-              <option value="1">Medellín</option>
-            </select>
+                    formControlName="city" 
+                    style="
+                    background-color: #f7fafc;
+                    border: 1px solid #d2d6dc;
+                    color: #4b5563;
+                    font-size: 0.875rem;
+                    border-radius: 0.375rem;
+                    outline: none;
+                    width: 100%;
+                    padding: 0.625rem;">
+                  <option *ngFor="let city of cities_by_region" value={{city.city_id}} [selected]="1">{{city.description}}</option>
+                </select>
               </div>
               <div>
                 <label for="small-input">Dirección</label>

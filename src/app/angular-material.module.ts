@@ -17,6 +17,13 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatExpansionModule, MatAccordion} from '@angular/material/expansion';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatTreeModule} from '@angular/material/tree';
+
+
+
 
 @NgModule({
   declarations: [],
@@ -24,12 +31,16 @@ import { MatDialogModule } from '@angular/material/dialog';
     CommonModule,
     MatButtonModule,
     MatButtonToggleModule,
+    MatTreeModule,
     MatCardModule,
+    MatExpansionModule,
     MatCheckboxModule,
+    MatProgressBarModule,
     MatFormFieldModule,
     MatGridListModule,
     MatIconModule,
     MatInputModule,
+    MatProgressSpinnerModule,
     MatListModule,
     MatMenuModule,
     MatRippleModule,
@@ -46,14 +57,17 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatButtonModule,
     MatButtonToggleModule,
     MatCardModule,
+    MatProgressBarModule,
     MatCheckboxModule,
     MatFormFieldModule,
     MatGridListModule,
     MatIconModule,
+    MatProgressSpinnerModule,
     MatInputModule,
     MatListModule,
     MatMenuModule,
     MatRippleModule,
+    MatTreeModule,
     MatSidenavModule,
     MatTableModule,
     MatPaginatorModule,
