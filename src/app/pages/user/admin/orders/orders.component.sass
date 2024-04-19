@@ -41,13 +41,19 @@ input[type="number"]
   grid-template-columns: repeat(3, minmax(0, 1fr))
   gap: 1rem 
 
+.grid-container-2
+  margin-top: 1rem
+  display: grid
+  grid-template-columns: repeat(2, minmax(0, 1fr))
+  gap: 1rem 
+
 .user_container 
   display: grid
   grid-template-columns: repeat(2, minmax(0, 1fr))
 
 
 .modal 
-  display: show
+  display: hidden
   position: fixed
   z-index: 1
   left: 0
@@ -64,6 +70,13 @@ input[type="number"]
   padding: 20px
   border: 1px solid #888
   width: 30%
+
+.modal-content-xl
+  background-color: #fefefe
+  margin: auto auto
+  padding: 20px
+  border: 1px solid #888
+  width: 50%
 
 
 .close 

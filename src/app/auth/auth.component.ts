@@ -1,22 +1,20 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl, ReactiveFormsModule } from '@angular/forms';
-import { LoginService } from '../../services/login.service';
-import { passwordRenderer } from 'handsontable/renderers';
-import { SHA256 } from "crypto-js"
-import { environment } from '../../../environments/environment';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { LoginService } from '../services/login.service';
+import { Route, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.sass'
+  selector: 'app-auth',
+  templateUrl: './auth.component.html',
+  styleUrl: './auth.component.sass'
 })
-export class LoginComponent {
-
+export class AuthComponent {
   userInfo!: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
-    private loginService : LoginService
+    private loginService : LoginService,
+    private router: Router
   ){
       this.userInfo = new FormGroup({
         email: new FormControl(""),
@@ -38,12 +36,13 @@ export class LoginComponent {
     this.loginService.login(formData)
     .subscribe({
       next: (response: any) => {
-        console.log(response)
+        if(response.access_token) {
+          localStorage.setItem("chainToken", response.access_token)
+          this.router.navigate(["/admin/agent"]);
+        }
       },
       error : (error: any) => {
         console.error(error);
       }});
   }
-
-
 }

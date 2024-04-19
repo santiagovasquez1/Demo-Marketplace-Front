@@ -1,15 +1,15 @@
 import { Component, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl, ReactiveFormsModule } from '@angular/forms';
-import { HomeService } from '../../services/home.service';
+import { SignService } from '../../services/sign.service';
 import { SHA256 } from "crypto-js"
 import { environment } from '../../../environments/environment';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.sass'
+  selector: 'app-sign',
+  templateUrl: './sign.component.html',
+  styleUrl: './sign.component.sass'
 })
-export class HomeComponent implements OnInit {
+export class SignComponent implements OnInit {
 
   createAgent!: FormGroup;
   agent_types: any = [
@@ -37,10 +37,10 @@ export class HomeComponent implements OnInit {
   
   ngOnInit(): void {
 
-    console.log("Starting home component")
+    console.log("Starting sign-up component")
 
     /** Asignar lista de agentes disponibles */
-    // this.homeService.getAgents()
+    // this.SignService.getAgents()
     // .subscribe({
     //   next: (response: any) => {
     //     this.agent_types = response;
@@ -51,13 +51,13 @@ export class HomeComponent implements OnInit {
     //   }});
 
       /** Asignar regiones disponible */
-      this.homeService.getRegions()
+      this.signService.getRegions()
       .subscribe({
         next: (response: any) => {
           this.regions = response
 
           /** Asignar ciudades disponibles de la región */
-        this.homeService.getCities()
+        this.signService.getCities()
         .subscribe({
           next: (response: any) => {
             /** Condición inicial para la región del Amazonas */
@@ -78,7 +78,7 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private homeService : HomeService,
+    private signService : SignService,
   ){
       this.createAgent = new FormGroup({
         agent_id: new FormControl("1"),
@@ -111,7 +111,7 @@ export class HomeComponent implements OnInit {
       password: this.createAgent.value.password
     } 
 
-      this.homeService.sendAgentData(formData)
+      this.signService.sendAgentData(formData)
       .subscribe({
         next: (response: any) => {
           console.log(response)

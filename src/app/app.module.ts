@@ -3,7 +3,6 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './pages/home/home.component';
 import { PagesComponent } from './pages/pages.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
@@ -20,15 +19,20 @@ import { NavAdminComponent } from './shared/nav/nav-admin/nav-admin.component';
 import { NavGeneratorComponent } from './shared/nav/nav-generator/nav-generator.component';
 import { PlantsComponent } from './pages/user/generator/plants/plants.component';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { SignComponent } from './pages/sign/sign.component';
+import { HeaderComponent } from './shared/header/header.component';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
+    AuthComponent,
+    SignComponent,
     PagesComponent,
     AgentsComponent,
     OrdersComponent,
     NavGeneratorComponent,
+    HeaderComponent,
     NavAdminComponent,
     UserComponent,
     PlantsComponent,
