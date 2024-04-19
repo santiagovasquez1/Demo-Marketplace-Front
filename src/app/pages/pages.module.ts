@@ -15,6 +15,8 @@ import { PlantsComponent } from './user/generator/plants/plants.component';
 import { SignComponent } from './sign/sign.component';
 import { HeaderComponent } from '../shared/header/header.component';
 import { AuthComponent } from '../auth/auth.component';
+import { SpinnerComponent } from '../shared/spinner/spinner.component';
+import { PaymentComponent } from './user/admin/payment/payment.component';
 
 
 
@@ -25,12 +27,14 @@ import { AuthComponent } from '../auth/auth.component';
     LoginComponent,
     AgentsComponent,
     HeaderComponent,
+    SpinnerComponent,
     AuthComponent,
     NavAdminComponent,
     NavGeneratorComponent,
     UserComponent,
     OrdersComponent,
-    PlantsComponent
+    PlantsComponent,
+    PaymentComponent
   ],
   imports: [
     CommonModule,

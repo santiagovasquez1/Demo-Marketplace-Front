@@ -9,7 +9,9 @@ import { Route, Router } from '@angular/router';
   styleUrl: './auth.component.sass'
 })
 export class AuthComponent {
+
   userInfo!: FormGroup;
+  loading: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -24,6 +26,8 @@ export class AuthComponent {
 
   onSubmit(): void {
 
+    this.loading = true;
+
     let data = {
       username: this.userInfo.value.email,
       password: this.userInfo.value.password
@@ -37,11 +41,13 @@ export class AuthComponent {
     .subscribe({
       next: (response: any) => {
         if(response.access_token) {
+          this.loading = false;
           localStorage.setItem("chainToken", response.access_token)
           this.router.navigate(["/admin/agent"]);
         }
       },
       error : (error: any) => {
+        this.loading = false;
         console.error(error);
       }});
   }

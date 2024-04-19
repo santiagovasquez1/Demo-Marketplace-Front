@@ -24,6 +24,16 @@
   </mat-expansion-panel-header>
     <button routerLink="/admin/orders" mat-button style="background-color: white; font-weight: 400; font-family: 'Montserrat';">Órdenes de despacho</button>
 </mat-expansion-panel>
+<mat-expansion-panel (opened)="panelOpenState = true"
+                      (closed)="panelOpenState = false">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      <img src="../../../assets/icons/agent-registry.svg">
+      <h3 style="font-family: 'Montserrat'; font-weight: 400; margin-left: 1rem; font-size: 1rem;">Liquidación</h3>
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+    <button routerLink="/admin/payment" mat-button style="background-color: white; font-weight: 400; font-family: 'Montserrat';">Liquidación de inyecciones</button>
+</mat-expansion-panel>
 </mat-accordion>  
 
 

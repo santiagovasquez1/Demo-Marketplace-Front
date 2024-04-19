@@ -125,10 +125,10 @@
                 <th mat-header-cell *matHeaderCellDef style="font-family: 'Montserrat';"> Acciones </th>
                 <td mat-cell *matCellDef="let element"> 
                     <div style="margin-top: 1rem; margin-bottom: 1rem;">
-                    <button mat-icon-button style="background-color:#AFD620;">
+                    <button mat-icon-button style="background-color:#AFD620;" (click)="updateUserStatusActive(element.user_id)">
                         <mat-icon style="color: white; font-size: 20px;">done</mat-icon>
                     </button>
-                    <button mat-icon-button style="background-color: red; margin-left: 1rem;">
+                    <button mat-icon-button style="background-color: red; margin-left: 1rem;" (click)="updateUserStatusRejected(element.user_id)">
                         <mat-icon style="color:white">close</mat-icon>
                     </button>
                     </div>

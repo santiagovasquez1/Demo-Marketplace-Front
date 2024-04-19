@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, FormControl, ReactiveFormsModule } 
 import { SignService } from '../../services/sign.service';
 import { SHA256 } from "crypto-js"
 import { environment } from '../../../environments/environment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign',
@@ -11,6 +12,7 @@ import { environment } from '../../../environments/environment';
 })
 export class SignComponent implements OnInit {
 
+  loading: boolean = true;
   createAgent!: FormGroup;
   agent_types: any = [
     {
@@ -55,6 +57,7 @@ export class SignComponent implements OnInit {
       .subscribe({
         next: (response: any) => {
           this.regions = response
+          this.loading = false;
 
           /** Asignar ciudades disponibles de la región */
         this.signService.getCities()
@@ -79,6 +82,7 @@ export class SignComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private signService : SignService,
+    private router: Router
   ){
       this.createAgent = new FormGroup({
         agent_id: new FormControl("1"),
@@ -96,7 +100,7 @@ export class SignComponent implements OnInit {
   }
 
   onSubmit(): void {
-    
+    this.loading = true;
     let formData = {
       status: 0,
       NIT: this.createAgent.value.NIT,
@@ -114,7 +118,11 @@ export class SignComponent implements OnInit {
       this.signService.sendAgentData(formData)
       .subscribe({
         next: (response: any) => {
-          console.log(response)
+          if(response) {
+            this.loading = false;
+            this.router.navigate(["/login"])
+            console.log(response)
+          }
         },
         error : (error: any) => {
           console.error(error);

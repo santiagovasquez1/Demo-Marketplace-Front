@@ -22,13 +22,17 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { SignComponent } from './pages/sign/sign.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { AuthComponent } from './auth/auth.component';
+import { SpinnerComponent } from './shared/spinner/spinner.component';
+import { PaymentComponent } from './pages/user/admin/payment/payment.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthComponent,
     SignComponent,
+    SpinnerComponent,
     PagesComponent,
+    PaymentComponent,
     AgentsComponent,
     OrdersComponent,
     NavGeneratorComponent,

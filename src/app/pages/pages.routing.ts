@@ -9,6 +9,10 @@ import { OrdersComponent } from './user/admin/orders/orders.component';
 import { PlantsComponent } from './user/generator/plants/plants.component';
 import { NotFoundComponent } from '../shared/not-found/not-found.component';
 import { AuthRoutingModule } from '../auth/auth.routing';
+import { AuthComponent } from '../auth/auth.component';
+import { PaymentComponent } from './user/admin/payment/payment.component';
+
+
 const routes: Routes = [
     {
         path: "",
@@ -20,7 +24,7 @@ const routes: Routes = [
         },
         {
           path:'login',
-          component: LoginComponent
+          component: AuthComponent
         },
         {
           path:'admin/agent',
@@ -31,6 +35,10 @@ const routes: Routes = [
           component: OrdersComponent
         },
         {
+          path:'admin/payment',
+          component: PaymentComponent
+        },
+        {
           path:'generator/plants',
           component: PlantsComponent
         },
@@ -38,7 +46,7 @@ const routes: Routes = [
           path:'**',
           component: NotFoundComponent
         }
-    ]
+      ]
     }
 ];
 

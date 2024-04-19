@@ -6,6 +6,7 @@ import { NavAdminComponent } from './nav/nav-admin/nav-admin.component';
 import { NavGeneratorComponent } from './nav/nav-generator/nav-generator.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HeaderComponent } from './header/header.component';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 
 
@@ -14,7 +15,8 @@ import { HeaderComponent } from './header/header.component';
     NavAdminComponent,
     NavGeneratorComponent,
     NotFoundComponent,
-    HeaderComponent
+    HeaderComponent,
+    SpinnerComponent
   ],
   imports: [
     CommonModule,

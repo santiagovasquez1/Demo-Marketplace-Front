@@ -1,34 +1,27 @@
 <div style="display: flex; flex-direction: row; font-family: 'Montserrat';">
-    
-    <app-nav-generator></app-nav-generator>
+    <app-nav-admin style="width: 25rem; box-shadow: 4px 0px 8px 0px #0000001A;"></app-nav-admin>
 
             <!-- Visual de agentes por acción -->
             <div style="display: flex; flex-direction: column; width: 100vw;">
-                <app-header [name]="'Generador'"></app-header>
+                <app-header [name]="'Administrador'"></app-header>
             <div style="margin-left: 2rem; margin-right: 2rem;">
-                <h1 style="font-weight: 600; color:#4C9C2E; font-size: 2.5rem;">Plantas de generación</h1>
+                <h1 style="font-weight: 600; color:#4C9C2E; font-size: 2.5rem;">Liquidaciones de inyección de energía</h1>
         
                 <div style="display: block; background: #F0F0F0; border-radius: 2rem;
                 box-shadow: 0px 4px 8px 0px #0000001A; margin-bottom: 2rem;">
                 <div style="padding: 1.5rem;">
                     <h2 style="color: #4C9C2E; margin:0; font-weight: 600;">Filtros</h2>
-                    <div class="grid-container-3">
+                    <div class="grid-container-4">
                     <div>
-                        <label for="small-input">Nombre</label>
+                        <label for="small-input">Generador</label>
                         <input type="text">
                     </div>
                     <div>
-                        <label for="small-input">Ubicación</label>
+                        <label for="small-input">Planta</label>
                         <input type="text">
                     </div>
                     <div>
-                        <label for="small-input">Fecha de operación</label>
-                        <input type="date" placeholder="dd/mm/aaaa">
-                    </div>
-                    </div>
-                    <div class="grid-container-3">
-                    <div>
-                        <label for="small-input">Tecnología de la planta</label>
+                        <label for="small-input">Tipo de energía</label>
                         <select 
                         style="
                             background-color: #f7fafc;
@@ -43,7 +36,17 @@
                         </select>
                     </div>
                     <div>
-                        <label for="small-input">Estado de la planta</label>
+                        <label for="small-input">Cantidad (MW)</label>
+                        <input type="text">
+                    </div>
+                    </div>
+                    <div class="grid-container-3">
+                    <div>
+                        <label for="small-input">Precio de venta</label>
+                        <input type="text">
+                    </div>
+                    <div>
+                        <label for="small-input">Estado liquidación</label>
                         <select 
                         style="
                             background-color: #f7fafc;
@@ -57,11 +60,15 @@
                         <option value="1">Pendiente</option>
                         </select>
                     </div>
+                    <div>
+                        <label for="small-input">Fecha de inyección</label>
+                        <input type="date" placeholder="dd/mm/aaaa">
+                    </div>
                     </div>
                 </div>
                 </div>
                 <div style="overflow-x:auto ;">
-                <!-- Botones Generador -->
+                <!-- Botón de liquidación    -->
                 <div style="display: flex; justify-content: flex-end; margin-bottom: 2rem;">
                     
                     <button mat-button style="
@@ -70,18 +77,9 @@
                         padding-right: 2rem;
                         color:white;
                        padding-left: 2rem;"
-                       >Fijar precios de energía</button>
-                    <button mat-button style="
-                       font-family: 'Montserrat'; border-radius: 1rem;
-                        background-color: #4c9c2e;
-                        padding-right: 2rem;
-                        color:white;
-                        margin-left: 1rem;
-                       padding-left: 2rem;"
-                       >Crear planta</button>
+                       >Liquidar inyección</button>
                 </div>
-
-                <!-- Tabla generador -->
+                <!-- Tabla  -->
                 <table mat-table *ngIf="users" [dataSource]="users.slice((pageIndex) * pageSize, (pageIndex + 1 ) * pageSize)" class="mat-elevation-z8">
                     <ng-container matColumnDef="company_name">
                     <th mat-header-cell *matHeaderCellDef style="font-family: 'Montserrat';"> Empresa </th>

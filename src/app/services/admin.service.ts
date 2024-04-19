@@ -16,4 +16,9 @@ export class AdminService {
     return this.http.get(url);
   }
 
+  updateUserStatus(data: any): any {
+    const url = `${this.apiUrl}/update`;
+    return this.http.put(url,data);
+  }
+
 }

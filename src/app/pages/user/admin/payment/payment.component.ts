@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import {PageEvent, MatPaginatorModule} from '@angular/material/paginator';
+import { PageEvent } from '@angular/material/paginator';
+import { ActivatedRoute } from '@angular/router';
 import { AdminService } from '../../../../services/admin.service';
 
 @Component({
-  selector: 'app-admin',
-  templateUrl: './agents.component.html',
-  styleUrl: './agents.component.sass'
+  selector: 'app-payment',
+  templateUrl: './payment.component.html',
+  styleUrl: './payment.component.sass'
 })
-export class AgentsComponent implements OnInit{
+export class PaymentComponent implements OnInit {
 
   length = 50;
   pageSize = 5;
@@ -43,7 +43,6 @@ export class AgentsComponent implements OnInit{
         next: (response: any) => {
           this.users = response.map((u:any) => {
             return {
-              user_id: u.user_id,
               company_name: u.company_name,
               contact: u.contact,
               location: "Antioquia", // TODO: Implementar el dato
@@ -69,47 +68,4 @@ export class AgentsComponent implements OnInit{
     console.log(this.pageIndex)
   }
 
-  updateUserStatusActive(id:number):any {
-
-    let requestBody = {
-      update: {
-        user_id: id,
-        status: 1
-      }
-    }
-
-    console.log(requestBody)
-
-    // this.adminService.updateUserStatus(requestBody)
-    // .subscribe({
-    //   next: (response: any) => {
-    //     console.log(response)
-    //   },
-    //   error : (error: any) => {
-    //     console.error(error);
-    //   }});
-  }
-
-  updateUserStatusRejected(id:number):any {
-
-    let requestBody = { 
-      update: {
-        user_id: id,
-        status: 2
-      }
-  }
-
-    console.log(requestBody)
-
-    // this.adminService.updateUserStatus(requestBody)
-    // .subscribe({
-    //   next: (response: any) => {
-    //     console.log(response)
-    //   },
-    //   error : (error: any) => {
-    //     console.error(error);
-    //   }});
-  }
-
-  
 }
