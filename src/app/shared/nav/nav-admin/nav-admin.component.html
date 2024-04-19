@@ -1,0 +1,29 @@
+
+<div style="display: flex; justify-content: center; margin-top: 2rem; margin-bottom: 3rem; ">
+  <img src="../../../assets/logo.svg">
+</div>
+<h2 style="color:  #4C9C2E; font-weight: 600; margin-left: 1rem;">Administrador</h2>
+<mat-accordion>
+<mat-expansion-panel (opened)="panelOpenState = true"
+                      (closed)="panelOpenState = false">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      <img src="../../../assets/icons/agent-registry.svg">
+      <h3 style="font-family: 'Montserrat'; font-weight: 400; margin-left: 1rem; font-size: 1rem;">Registro agentes</h3>
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+    <button routerLink="/admin/agent" mat-button style="background-color: white; font-weight: 400; font-family: 'Montserrat';">Agentes registrados</button>
+</mat-expansion-panel>
+<mat-expansion-panel (opened)="panelOpenState = true"
+                      (closed)="panelOpenState = false">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      <img src="../../../assets/icons/agent-registry.svg">
+      <h3 style="font-family: 'Montserrat'; font-weight: 400; margin-left: 1rem; font-size: 1rem;">Órdenes de despacho</h3>
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+    <button routerLink="/admin/orders" mat-button style="background-color: white; font-weight: 400; font-family: 'Montserrat';">Órdenes de despacho</button>
+</mat-expansion-panel>
+</mat-accordion>  
+
+

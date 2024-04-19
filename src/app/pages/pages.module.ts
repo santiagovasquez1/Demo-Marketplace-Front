@@ -6,8 +6,14 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { AngularMaterialModule } from '../angular-material.module';
 import { UserComponent } from './user/user.component';
-import { AdminComponent } from './user/admin/admin.component';
+import { AgentsComponent } from './user/admin/agents/agents.component';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { OrdersComponent } from './user/admin/orders/orders.component';
+import { EnergyPlantsComponent } from './user/generator/energy-plants/energy-plants.component';
+import { NavAdminComponent } from '../shared/nav/nav-admin/nav-admin.component';
+import { NavComponent } from '../shared/nav/nav.component';
+import { NavGeneratorComponent } from '../shared/nav/nav-generator/nav-generator.component';
+import { PlantsComponent } from './user/generator/plants/plants.component';
 
 
 
@@ -16,9 +22,12 @@ import { MatExpansionModule } from '@angular/material/expansion';
     PagesComponent,
     HomeComponent,
     LoginComponent,
-    AdminComponent,
+    AgentsComponent,
+    NavAdminComponent,
+    NavGeneratorComponent,
     UserComponent,
-
+    OrdersComponent,
+    PlantsComponent
   ],
   imports: [
     CommonModule,

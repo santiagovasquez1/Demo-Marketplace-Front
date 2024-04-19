@@ -12,7 +12,7 @@
         <h3 style="font-family: 'Montserrat'; font-weight: 400; margin-left: 1rem; font-size: 1rem;">Registro agentes</h3>
       </mat-panel-title>
     </mat-expansion-panel-header>
-      <button (click)="goBack()" mat-button style="background-color: white; font-weight: 400; font-family: 'Montserrat';">Agentes registrados</button>
+      <button routerLink="/admin/agent" mat-button style="background-color: white; font-weight: 400; font-family: 'Montserrat';">Agentes registrados</button>
   </mat-expansion-panel>
   <mat-expansion-panel (opened)="panelOpenState = true"
                         (closed)="panelOpenState = false">

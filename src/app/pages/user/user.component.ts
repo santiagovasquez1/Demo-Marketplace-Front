@@ -11,19 +11,9 @@ export class UserComponent {
 
   panelOpenState = true;
   admin = false;
-  user = false;
+  generator = true;
 
   constructor(private router: Router){
-
-  }
-
-
-  goBack() {
-    console.log("Estoy en el go back")
-    this.router.navigate(["/admin/agents"])
-  }
-
-  removeData() {
 
   }
 

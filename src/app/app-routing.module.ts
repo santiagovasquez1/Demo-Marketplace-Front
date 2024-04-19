@@ -4,7 +4,9 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserComponent } from './pages/user/user.component';
-import { AdminComponent } from './pages/user/admin/admin.component';
+import { AgentsComponent } from './pages/user/admin/agents/agents.component';
+import { OrdersComponent } from './pages/user/admin/orders/orders.component';
+import { PlantsComponent } from './pages/user/generator/plants/plants.component';
 
 const routes: Routes = [
   {
@@ -20,8 +22,16 @@ const routes: Routes = [
     component: UserComponent
   },
   {
-    path:'admin/:tab',
-    component: AdminComponent
+    path:'admin/agent',
+    component: AgentsComponent
+  },
+  {
+    path:'admin/orders',
+    component: OrdersComponent
+  },
+  {
+    path:'generator/plants',
+    component: PlantsComponent
   }
 ];
 

@@ -1,0 +1,224 @@
+<div style="display: flex; flex-direction: row; font-family: 'Montserrat';">
+    <!-- Modal de asignación de desapcho -->
+    <div *ngIf="false" class="modal">
+        <div class="modal-content">
+            <span class="close" (click) = "modal = false">&times;</span>
+            <div style="display: flex; width: 100%; justify-content: center;">
+                <div style="height: 4rem; width: 4rem; border-radius: 4rem; border: solid 3px #4C9C2E ;
+                 display: flex; justify-content: center;
+                 align-items: center;">
+                        <p style="margin: 0; font-size: 2rem; font-weight: 400; color:#858584;">?</p>
+                </div>
+            </div>
+            <h4 style="font-weight: 700; text-align: center; margin-top: 2rem; color:#858584;">Despacho de energía</h4>
+            <h4 style="font-weight: 400; text-align: center; margin-top: 2rem;
+             color:#858584;
+             font-weight: 500; padding-left: 2rem; padding-right: 2rem;">¿Deseas despachar xxx MW al generador XXX?</h4>
+            <div style="display: flex; justify-content: center; ">
+                <button mat-button style="
+                    font-family: 'Montserrat'; border-radius: 1rem;
+                     border: solid 1px gray;
+                     padding-right: 2rem;
+                    padding-left: 2rem;"
+                    (click)="modal = false"
+                    >No</button>
+                <button mat-button style="
+                font-family: 'Montserrat'; background-color: #4C9C2E; color: white;
+                 border-radius: 1rem; margin-left: 0.5rem;
+                 border: solid 1px #c6d814;
+                 padding-right: 2rem;
+                 padding-left: 2rem;
+                 ">Sí</button>
+            </div>
+        </div>
+    </div>
+    <!-- Modal reinicio de producción -->
+    <div *ngIf="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" (click) = "modal = false">&times;</span>
+            <div style="display: flex; width: 100%; justify-content: center;">
+                <div style="height: 4rem; width: 4rem; border-radius: 4rem; border: solid 3px #4C9C2E ;
+                 display: flex; justify-content: center;
+                 align-items: center;">
+                        <p style="margin: 0; font-size: 2rem; font-weight: 400; color:#858584;">?</p>
+                </div>
+            </div>
+            <h4 style="font-weight: 700; text-align: center; margin-top: 2rem; color:#858584;">Reinicio producción</h4>
+            <h4 style="font-weight: 400; text-align: center; margin-top: 2rem;
+             color:#858584;
+             font-weight: 500; padding-left: 2rem; padding-right: 2rem;">¿Deseas reiniciar la producción de la planta xxxxxxxx?</h4>
+            <div style="display: flex; justify-content: center; ">
+                <button mat-button style="
+                    font-family: 'Montserrat'; border-radius: 1rem;
+                     border: solid 1px gray;
+                     padding-right: 2rem;
+                    padding-left: 2rem;"
+                    (click)="modal = false"
+                    >No</button>
+                <button mat-button style="
+                font-family: 'Montserrat'; background-color: #4C9C2E; color: white;
+                 border-radius: 1rem; margin-left: 0.5rem;
+                 border: solid 1px #c6d814;
+                 padding-right: 2rem;
+                 padding-left: 2rem;
+                 ">Sí</button>
+            </div>
+        </div>
+    </div>
+    <!-- Modal fijar precio de la energía  -->
+    <div class="modal">
+        <div class="modal-content">
+            <span class="close" (click) = "modal = false">&times;</span>
+            <div style="display: flex; margin-left: 0.5rem;">
+                <img src="../../../../../assets/icons/inject.svg">
+                <h2 style="font-weight: 700;margin-left: 2rem; margin-top: 1.5rem; color:#4C9C2E;
+                ;">
+                    Inyectar energía
+                </h2>
+            </div>
+            <form [formGroup]="createAgent" style="width: 100%; max-width: 100rem; margin-left: 0.5rem;">
+                <!-- NIT y Empresa -->
+                <div style="margin-bottom: 0.8rem;">
+                    <label for="small-input">Nombre energía</label>
+                    <input formControlName="NIT" type="text">
+                </div>
+                <div style="margin-bottom: 0.8rem;">
+                    <label for="small-input">Cantidad de energía despachada (MWh)</label>
+                    <input formControlName="company_name" type="text">
+                </div>
+                <!-- Contacto y teléfono -->
+                <div style="margin-bottom: 0.8rem;">
+                    <label for="small-input">Cantidad de energía inyectada (MWh)</label>
+                    <input formControlName="contact" type="text">
+                </div>
+                <div style="margin-bottom: 0.8rem;">
+                    <label for="small-input">Cantidad de energía (MWh)</label>
+                    <input formControlName="phone" type="number">
+                </div>
+                <div style="margin-bottom: 0.8rem;">
+                    <label for="small-input">Cantidad de energía (MWh) Bolsa</label>
+                    <input formControlName="phone" type="number">
+                </div>  
+            </form>
+            
+            
+
+            <div style="display: flex; justify-content: center; margin-top: 2rem;">
+                <button mat-button style="
+                    font-family: 'Montserrat'; border-radius: 1rem;
+                     border: solid 1px gray;
+                     padding-right: 2rem;
+                    padding-left: 2rem;"
+                    (click)="modal = false"
+                    >Cancelar</button>
+                <button mat-button style="
+                font-family: 'Montserrat'; background-color: #4C9C2E; color: white;
+                 border-radius: 1rem; margin-left: 0.5rem;
+                 border: solid 1px #c6d814;
+                 padding-right: 2rem;
+                 padding-left: 2rem;
+                 ">Inyectar</button>
+            </div>
+        </div>
+    </div>
+
+    <app-nav-admin style="width: 25rem; box-shadow: 4px 0px 8px 0px #0000001A;"></app-nav-admin>
+      <!-- Visual de ordenes de despacho -->
+        <div style="display: flex; flex-direction: column; width: 100vw;">
+            <mat-toolbar style="border-bottom: 1px solid #929292; background: white; margin-left: .1rem;">
+            <mat-toolbar-row>
+            <h1 style="font-family: 'Montserrat'; color: #4C9C2E; font-weight: 600; font-size: 24px;">Blockchain MVM</h1>
+            <span class="example-spacer"></span>
+    
+            <div>
+                <button mat-button style="height: 4rem;">
+                    <div style="display: flex; align-items: center;">
+                    <img src="../../../assets/icons/user.svg">
+                    <span style="font-family: 'Montserrat'; margin-left: 1rem; margin-right: 1rem; font-size: 1rem; font-weight: 400;">Administrador</span>
+                    <img src="../../../assets/icons/selector.svg">
+                    </div>
+                </button>
+                    <mat-menu>
+                    <button mat-menu-item>Item 1</button>
+                    <button mat-menu-item>Item 2</button>
+                    </mat-menu>
+            </div>
+    
+            <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+                <mat-icon>share</mat-icon>
+            </button>
+            </mat-toolbar-row>
+        </mat-toolbar>
+        <div style="margin-left: 2rem; margin-right: 2rem;">
+            <h1 style="font-weight: 600; color:#4C9C2E; font-size: 2.5rem;">Ordenes de despacho</h1>
+    
+            <div style="display: block; background: #F0F0F0; border-radius: 2rem;
+            box-shadow: 0px 4px 8px 0px #0000001A; margin-bottom: 2rem;">
+            <div style="padding: 1.5rem;">
+                <h2 style="color: #4C9C2E; margin:0; font-weight: 600;">Filtros</h2>
+                <div class="grid-container-3">
+                <div>
+                    <label for="small-input">Generador</label>
+                    <input type="text">
+                </div>
+                <div>
+                    <label for="small-input">Capacidad Nominal (MW)</label>
+                    <input type="text">
+                </div>
+                <div>
+                    <label for="small-input">Energía Despachada (MWh)</label>
+                    <input type="text">
+                </div>
+                </div>
+            </div>
+            </div>
+            <div style="overflow-x:auto ;">
+    
+                <table mat-table *ngIf="orders" [dataSource]="orders" class="mat-elevation-z8">
+                    <ng-container matColumnDef="user_id">
+                    <th mat-header-cell *matHeaderCellDef style="font-family: 'Montserrat';"> Generador </th>
+                    <td mat-cell *matCellDef="let element"> {{element.user_id}} </td>
+                    </ng-container>
+            
+                    <ng-container matColumnDef="power">
+                    <th mat-header-cell *matHeaderCellDef style="font-family: 'Montserrat';"> Capacidad nomimal (MWh) </th>
+                    <td mat-cell *matCellDef="let element"> {{element.power}} </td>
+                    </ng-container>
+            
+            
+                    <ng-container matColumnDef="delivery">
+                    <th mat-header-cell *matHeaderCellDef style="font-family: 'Montserrat';"> Energía Despachada (MWh) </th>
+                    <td mat-cell *matCellDef="let element"> {{element.delivery}} </td>
+                    </ng-container>
+            
+                    <ng-container matColumnDef="delivery_balance">
+                    <th mat-header-cell *matHeaderCellDef style="font-family: 'Montserrat';"> Asignar despacho </th>
+                    <td mat-cell *matCellDef="let element"> 
+                        <div>
+                            <input type="text">
+                        </div>
+                    </td>
+                    </ng-container>
+            
+                    <ng-container matColumnDef="action" >
+                    <th mat-header-cell *matHeaderCellDef style="font-family: 'Montserrat';"> Acciones </th>
+                    <td mat-cell *matCellDef="let element">
+                        <button mat-button style="background-color: #4C9C2E; border-radius: 1rem;" (click)="handleModal()">
+                            <div style="display: flex; align-items: center;">
+                                <img  src="../../../../../assets/icons/assing.svg">
+                                <!-- <span style="margin-left:10px ;font-size: 0.8rem; color: white; font-family: 'Montserrat'; font-weight: 600;">Asignar</span> -->
+                            </div>
+                        </button>
+                    </td>
+                    </ng-container>
+            
+                    <!-- Define las columnas que se mostrarán -->
+                    <tr mat-header-row *matHeaderRowDef="orderColumns" style="font-family: 'Montserrat'; background: #4C9C2E;  border-radius: 8px 8px 0px 0px; color: white; font-weight: 700; height: 2.4rem;"></tr>
+                    <tr mat-row *matRowDef="let row; columns: orderColumns;" style="font-family: 'Montserrat';"></tr>
+                </table>
+
+            <mat-paginator style="font-family: 'Montserrat';" [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>
+            </div>
+        </div>
+        </div>
+</div>

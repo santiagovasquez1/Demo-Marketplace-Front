@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AsideComponent } from './aside.component';
+import { NavGeneratorComponent } from './nav-generator.component';
 
-describe('AsideComponent', () => {
-  let component: AsideComponent;
-  let fixture: ComponentFixture<AsideComponent>;
+describe('NavGeneratorComponent', () => {
+  let component: NavGeneratorComponent;
+  let fixture: ComponentFixture<NavGeneratorComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AsideComponent]
+      declarations: [NavGeneratorComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(AsideComponent);
+    fixture = TestBed.createComponent(NavGeneratorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

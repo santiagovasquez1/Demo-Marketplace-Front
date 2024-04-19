@@ -15,12 +15,14 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { MatExpansionModule, MatAccordion} from '@angular/material/expansion';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatTreeModule} from '@angular/material/tree';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 
 
@@ -31,9 +33,11 @@ import {MatTreeModule} from '@angular/material/tree';
     CommonModule,
     MatButtonModule,
     MatButtonToggleModule,
+    MatDatepickerModule,
     MatTreeModule,
     MatCardModule,
     MatExpansionModule,
+    MatNativeDateModule,
     MatCheckboxModule,
     MatProgressBarModule,
     MatFormFieldModule,
@@ -57,7 +61,9 @@ import {MatTreeModule} from '@angular/material/tree';
     MatButtonModule,
     MatButtonToggleModule,
     MatCardModule,
+    MatDatepickerModule,
     MatProgressBarModule,
+    MatNativeDateModule,
     MatCheckboxModule,
     MatFormFieldModule,
     MatGridListModule,

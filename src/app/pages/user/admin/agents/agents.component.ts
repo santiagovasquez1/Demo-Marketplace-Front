@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { AsideComponent } from '../../../shared/aside/aside.component';
 import {PageEvent, MatPaginatorModule} from '@angular/material/paginator';
-import { AdminService } from '../../../services/admin.service';
+import { AdminService } from '../../../../services/admin.service';
 
 @Component({
   selector: 'app-admin',
-  templateUrl: './admin.component.html',
-  styleUrl: './admin.component.sass'
+  templateUrl: './agents.component.html',
+  styleUrl: './agents.component.sass'
 })
-export class AdminComponent implements OnInit{
+export class AgentsComponent implements OnInit{
 
   length = 50;
   pageSize = 5;
@@ -36,11 +35,8 @@ export class AdminComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.param = params['tab'];
-    });
+
     /** Busqueda de agentes en la base de datos */
-    if(this.param === "agents"){
       this.adminService.getUsers()
       .subscribe({
         next: (response: any) => {
@@ -59,7 +55,7 @@ export class AdminComponent implements OnInit{
         error : (error: any) => {
           console.error(error);
         }});
-    }
+
 
   }
 
