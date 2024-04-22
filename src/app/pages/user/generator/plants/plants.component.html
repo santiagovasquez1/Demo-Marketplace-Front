@@ -153,9 +153,9 @@
             </div>
 
             <!-- Modal reinicio de producción -->
-            <div *ngIf="false" class="modal">
+            <div *ngIf="restart" class="modal">
                 <div class="modal-content">
-                    <span class="close" (click) = "modal = false">&times;</span>
+                    <span class="close" (click)="restart = false">&times;</span>
                     <div style="display: flex; width: 100%; justify-content: center;">
                         <div style="height: 4rem; width: 4rem; border-radius: 4rem; border: solid 3px #4C9C2E ;
                         display: flex; justify-content: center;
@@ -173,7 +173,7 @@
                             border: solid 1px gray;
                             padding-right: 2rem;
                             padding-left: 2rem;"
-                            (click)="modal = false"
+                            (click)="restart = false"
                             >No</button>
                         <button mat-button style="
                         font-family: 'Montserrat'; background-color: #4C9C2E; color: white;
@@ -187,9 +187,9 @@
             </div>
 
             <!-- Modal inyectar energía  -->
-            <div *ngIf="false" class="modal">
+            <div *ngIf="inject" class="modal">
                 <div class="modal-content">
-                    <span class="close" (click) = "modal = false">&times;</span>
+                    <span class="close" (click) = "inject = false">&times;</span>
                     <div style="display: flex; margin-left: 0.5rem;">
                         <img src="../../../../../assets/icons/inject.svg">
                         <h2 style="font-weight: 700;margin-left: 2rem; margin-top: 1.5rem; color:#4C9C2E;
@@ -205,7 +205,7 @@
                         </div>
                         <div style="margin-bottom: 0.8rem;">
                             <label for="small-input">Cantidad de energía despachada (MWh)</label>
-                            <input formControlName="company_name" type="text">
+                            <input formControlName="name" type="text">
                         </div>
                         <!-- Contacto y teléfono -->
                         <div style="margin-bottom: 0.8rem;">
@@ -230,7 +230,7 @@
                             border: solid 1px gray;
                             padding-right: 2rem;
                             padding-left: 2rem;"
-                            (click)="modal = false"
+                            (click)="inject = false"
                             >Cancelar</button>
                         <button mat-button style="
                         font-family: 'Montserrat'; background-color: #4C9C2E; color: white;
@@ -299,46 +299,46 @@
                     </div>
 
                     <!-- Tabla generador -->
-                    <table mat-table class="mat-elevation-z8">
-                        <ng-container matColumnDef="company_name">
+                    <table *ngIf="users" [dataSource]="users" mat-table class="mat-elevation-z8">
+                        <ng-container matColumnDef="name">
                         <th mat-header-cell *matHeaderCellDef class="font-montserrat" style="border-top-left-radius: 0.5rem; border-bottom-left-radius: 0.5rem;"> Nombre </th>
-                        <td mat-cell *matCellDef="let element"> {{element.company_name}} </td>
+                        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
                         </ng-container>
-                
-                        <ng-container matColumnDef="contact">
-                        <th mat-header-cell *matHeaderCellDef class="font-montserrat"> Ubicación </th>
-                        <td mat-cell *matCellDef="let element"> {{element.contact}} </td>
-                        </ng-container>
-                
                 
                         <ng-container matColumnDef="location">
-                        <th mat-header-cell *matHeaderCellDef class="font-montserrat"> Coordenadas </th>
+                        <th mat-header-cell *matHeaderCellDef class="font-montserrat"> Ubicación </th>
                         <td mat-cell *matCellDef="let element"> {{element.location}} </td>
                         </ng-container>
                 
-                        <ng-container matColumnDef="email">
-                        <th mat-header-cell *matHeaderCellDef class="font-montserrat"> Fecha inicio operaciones </th>
-                        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+                
+                        <ng-container matColumnDef="coord">
+                        <th mat-header-cell *matHeaderCellDef class="font-montserrat"> Coordenadas </th>
+                        <td mat-cell *matCellDef="let element"> {{element.coord}} </td>
                         </ng-container>
                 
-                        <ng-container matColumnDef="agent_type" >
+                        <ng-container matColumnDef="initial_date">
+                        <th mat-header-cell *matHeaderCellDef class="font-montserrat"> Fecha inicio operaciones </th>
+                        <td mat-cell *matCellDef="let element"> {{element.initial_date}} </td>
+                        </ng-container>
+                
+                        <ng-container matColumnDef="co2" >
                         <th mat-header-cell *matHeaderCellDef class="font-montserrat"> Tasa de emisión </th>
-                        <td mat-cell *matCellDef="let element"> {{element.agent_type}} </td>
+                        <td mat-cell *matCellDef="let element"> {{element.co2}} </td>
                         </ng-container>
 
-                        <ng-container matColumnDef="agent_type2" >
+                        <ng-container matColumnDef="nominal_power" >
                         <th mat-header-cell *matHeaderCellDef class="font-montserrat"> Capacidad nominal </th>
-                        <td mat-cell *matCellDef="let element"> {{element.agent_type}} </td>
+                        <td mat-cell *matCellDef="let element"> {{element.nominal_power}} </td>
                         </ng-container>
 
-                        <ng-container matColumnDef="agent_type3" >
+                        <ng-container matColumnDef="technology" >
                         <th mat-header-cell *matHeaderCellDef class="font-montserrat"> Tecnología </th>
-                        <td mat-cell *matCellDef="let element"> {{element.agent_type}} </td>
+                        <td mat-cell *matCellDef="let element"> {{element.technology}} </td>
                         </ng-container>
 
-                        <ng-container matColumnDef="agent_type4" >
+                        <ng-container matColumnDef="energy_qty" >
                         <th mat-header-cell *matHeaderCellDef class="font-montserrat"> Cantidad de energía </th>
-                        <td mat-cell *matCellDef="let element"> {{element.agent_type}} </td>
+                        <td mat-cell *matCellDef="let element"> {{element.energy_qty}} </td>
                         </ng-container>
                 
                         <ng-container matColumnDef="status">
@@ -349,14 +349,17 @@
                         <ng-container matColumnDef="actions">
                         <th mat-header-cell *matHeaderCellDef class="font-montserrat" style="border-top-right-radius: 0.5rem; border-bottom-right-radius: 0.5rem;"> Acciones </th>
                         <td mat-cell *matCellDef="let element"> 
-                            <div style="margin-top: 1rem; margin-bottom: 1rem;">
-                            <button mat-icon-button style="background-color:#AFD620;">
-                                <mat-icon style="color: white; font-size: 20px;">done</mat-icon>
-                            </button>
-                            <button mat-icon-button style="background-color: red; margin-left: 1rem;">
-                                <mat-icon style="color:white">close</mat-icon>
-                            </button>
-                            </div>
+                            <div class="mat-icon-button-custom" style="display: flex;">
+                                <button style="border-radius: 50%; height: 40px; width: 40px; background-color: rgb(194 213 1); color:white; border: none; cursor: pointer;"
+                                (click)="inject = true">
+                                    <img src="../../../../../assets/icons/inject_icon.svg">
+                                </button>
+                                
+                                <button style="border-radius: 50%; height: 40px; width: 40px; background-color: rgb(194 213 1); color:white; border:none; margin-left: 0.2rem; cursor: pointer;"
+                                (click)="restart = true">
+                                    <img src="../../../../../assets/icons/agent-registry.svg">
+                                </button>
+                               </div> 
                         </td>
                         </ng-container>
                 

@@ -16,10 +16,12 @@ export class PlantsComponent implements OnInit{
   createPlant: boolean = false;
   price: boolean = false;
   modal: boolean = false;
+  inject: boolean = false;
+  restart: boolean = false;
   
 
   pageEvent!: PageEvent;
-  userColumns: string[] = ['company_name', 'contact', 'location', 'email', 'agent_type', 'agent_type2','agent_type3', 'agent_type4', 'status', 'actions'];
+  userColumns: string[] = ['name', 'location', 'coord', 'initial_date', 'co2', 'nominal_power','technology', 'energy_qty', 'status', 'actions'];
   orderColumns: string[] = ['user_id', 'power', 'delivery', 'delivery_balance', 'action'];
   users: any;
   orders = [{
@@ -30,18 +32,25 @@ export class PlantsComponent implements OnInit{
 
 
   constructor(private homeService: HomeService){
+    this.users = [
+      {
+        name: "ISAGEN",
+        location: "Guajira",
+        coord: "Guajira",
+        initial_date: "2015-02-20",
+        co2: "24",
+        nominal_power: "20",
+        technology: "Solar",
+        energy_qty: "2000",
+        status: "Activa"
+      }
+    ]
   }
 
   ngOnInit(): void {
+
     /** Busqueda de agentes en la base de datos */
-      this.homeService.getAgents()
-      .subscribe({
-        next: (response: any) => {
-          console.log(response)
-        },
-        error : (error: any) => {
-          console.error(error);
-        }});
+    
   }
 
   handlePageEvent(e: PageEvent) {

@@ -43,15 +43,17 @@ export class AgentsComponent implements OnInit{
       .subscribe({
         next: (response: any) => {
           this.loading = false;
-          this.users = response.map((u:any) => {
+          /** Validación para mostrar solo los usuarios generadores */
+          this.users = response.filter((u:any) => u.agent_name === "Generador").map((u:any) => {
             return {
               user_id: u.user_id,
               company_name: u.company_name,
               contact: u.contact,
-              location: `${u.regions}, ${u.cities}`, // TODO: Implementar el dato
+              location: `${u.regions}, ${u.cities}`, 
               email: u.email,
               agent_name: u.agent_name,
-              status: u.status === 0  ? "Pendiente" : u.status === 1 ? "Aceptado" : "Rechazado"
+              status: u.status === 0  ? "Pendiente" : u.status === 1 ? "Aprobado" : "Rechazado",
+              active: u.status
             }
           } )
           console.log(response)
@@ -88,7 +90,8 @@ export class AgentsComponent implements OnInit{
                 location: `${u.regions}, ${u.cities}`,
                 email: u.email,
                 agent_name: u.agent_name,
-                status: u.status === 0  ? "Pendiente" : u.status === 1 ? "Aceptado" : "Rechazado"
+                status: u.status === 0  ? "Pendiente" : u.status === 1 ? "Aprobado" : "Rechazado",
+                active: u.status
               }
             } )
             console.log(this.users)
@@ -142,5 +145,9 @@ export class AgentsComponent implements OnInit{
       }});
   }
 
+  disabledButton(status: number){
+
+    return status >= 1 ? true : false;
+  }
   
 }
