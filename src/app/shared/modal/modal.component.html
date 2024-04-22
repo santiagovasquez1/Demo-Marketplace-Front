@@ -1,0 +1,7 @@
+
+<div *ngIf="open" class="modal">
+    <div [ngClass]="{'modal-content': !large, 'modal-content-xl': large}">
+        <span class="close" (click)="toggleModal()">&times;</span>
+        <ng-content></ng-content>
+    </div>
+</div>    
