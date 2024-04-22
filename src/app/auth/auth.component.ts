@@ -46,7 +46,6 @@ export class AuthComponent {
           this.loading = false;
           localStorage.setItem("chainToken", response.access_token)
           let token = this.jwtHelper.decodeToken(response.access_token)
-          console.log(token.sub.agent_id)
 
           /** Condicionamiento de ruta inicial a redirigir */
 

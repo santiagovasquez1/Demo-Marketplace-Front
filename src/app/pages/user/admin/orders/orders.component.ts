@@ -45,7 +45,6 @@ export class OrdersComponent  implements OnInit{
       this.adminService.getUsers()
       .subscribe({
         next: (response: any) => {
-          console.log(response)
         },
         error : (error: any) => {
           console.error(error);
@@ -57,7 +56,6 @@ export class OrdersComponent  implements OnInit{
     this.length = e.length;
     this.pageSize = e.pageSize;
     this.pageIndex = e.pageIndex;
-    console.log(this.pageIndex)
   }
 
   handleModal(generatorName: string) {

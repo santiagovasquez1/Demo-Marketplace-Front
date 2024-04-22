@@ -52,7 +52,6 @@ export class PaymentComponent implements OnInit {
               status: u.status
             }
           } )
-          console.log(response)
         },
         error : (error: any) => {
           console.error(error);
@@ -66,7 +65,6 @@ export class PaymentComponent implements OnInit {
     this.length = e.length;
     this.pageSize = e.pageSize;
     this.pageIndex = e.pageIndex;
-    console.log(this.pageIndex)
   }
 
 }

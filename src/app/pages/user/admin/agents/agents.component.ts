@@ -56,7 +56,6 @@ export class AgentsComponent implements OnInit{
               active: u.status
             }
           } )
-          console.log(response)
         },
         error : (error: any) => {
           this.loading = false;
@@ -71,7 +70,6 @@ export class AgentsComponent implements OnInit{
     this.length = e.length;
     this.pageSize = e.pageSize;
     this.pageIndex = e.pageIndex;
-    console.log(this.pageIndex)
   }
 
 
@@ -94,7 +92,6 @@ export class AgentsComponent implements OnInit{
                 active: u.status
               }
             } )
-            console.log(this.users)
           },
           error : (error: any) => {
             this.loading = false;
@@ -137,7 +134,6 @@ export class AgentsComponent implements OnInit{
     .subscribe({
       next: (response: any) => {
         this.getUsers()
-        console.log(response)
       },
       error : (error: any) => {
         this.loading = false;

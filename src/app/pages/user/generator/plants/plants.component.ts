@@ -58,7 +58,6 @@ export class PlantsComponent implements OnInit{
     this.length = e.length;
     this.pageSize = e.pageSize;
     this.pageIndex = e.pageIndex;
-    console.log(this.pageIndex)
   }
 
 }

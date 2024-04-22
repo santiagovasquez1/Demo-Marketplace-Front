@@ -22,7 +22,6 @@ export class SignComponent implements OnInit {
   
   ngOnInit(): void {
 
-    console.log("Starting sign-up component")
 
     /** Asignar lista de agentes disponibles */
     this.signService.getAgents()
@@ -107,7 +106,6 @@ export class SignComponent implements OnInit {
           if(response) {
             this.loading = false;
             this.router.navigate(["/login"])
-            console.log(response)
           }
         },
         error : (error: any) => {
