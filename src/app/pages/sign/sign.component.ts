@@ -69,11 +69,13 @@ export class SignComponent implements OnInit {
             this.cities_by_region = cities_by_region;
           },
           error : (error: any) => {
+            this.loading = false;
             console.error(error);
           }});
 
         },
         error : (error: any) => {
+          this.loading = false;
           console.error(error);
         }});
 
@@ -125,6 +127,7 @@ export class SignComponent implements OnInit {
           }
         },
         error : (error: any) => {
+          this.loading = false;
           console.error(error);
         }});
     }

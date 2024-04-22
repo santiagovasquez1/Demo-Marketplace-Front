@@ -69,46 +69,71 @@ export class AgentsComponent implements OnInit{
     console.log(this.pageIndex)
   }
 
+
+  getUsers(){
+        /** Busqueda de agentes en la base de datos */
+        this.adminService.getUsers()
+        .subscribe({
+          next: (response: any) => {
+            this.users = response.map((u:any) => {
+              return {
+                user_id: u.user_id,
+                company_name: u.company_name,
+                contact: u.contact,
+                location: "Antioquia", // TODO: Implementar el dato
+                email: u.email,
+                agent_type: u.agent_id,
+                status: u.status
+              }
+            } )
+            console.log(response)
+          },
+          error : (error: any) => {
+            console.error(error);
+          }});
+  }
+
   updateUserStatusActive(id:number):any {
 
     let requestBody = {
-      update: {
+    
         user_id: id,
         status: 1
-      }
+      
     }
 
     console.log(requestBody)
 
-    // this.adminService.updateUserStatus(requestBody)
-    // .subscribe({
-    //   next: (response: any) => {
-    //     console.log(response)
-    //   },
-    //   error : (error: any) => {
-    //     console.error(error);
-    //   }});
+    this.adminService.updateUserStatus(requestBody)
+    .subscribe({
+      next: (response: any) => {
+        this.getUsers();
+      },
+      error : (error: any) => {
+        console.error(error);
+      }});
   }
 
   updateUserStatusRejected(id:number):any {
 
     let requestBody = { 
-      update: {
+      
         user_id: id,
         status: 2
-      }
+      
   }
 
     console.log(requestBody)
 
-    // this.adminService.updateUserStatus(requestBody)
-    // .subscribe({
-    //   next: (response: any) => {
-    //     console.log(response)
-    //   },
-    //   error : (error: any) => {
-    //     console.error(error);
-    //   }});
+    this.adminService.updateUserStatus(requestBody)
+    .subscribe({
+      next: (response: any) => {
+        this.getUsers()
+        console.log(response)
+      },
+      error : (error: any) => {
+        console.error(error);
+      }});
   }
 
   
