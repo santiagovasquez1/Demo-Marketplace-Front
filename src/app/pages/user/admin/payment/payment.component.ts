@@ -15,6 +15,7 @@ export class PaymentComponent implements OnInit {
   pageSize = 5;
   pageIndex = 0;
   pageSizeOptions = [5, 10, 25];
+  delivery: boolean = false;
 
   param: string;
   pageEvent!: PageEvent;

@@ -12,6 +12,10 @@ export class HeaderComponent implements OnInit {
     this.name = '';
    }
 
+   removeToken() {
+    localStorage.removeItem("chainToken");
+   }
+
   ngOnInit(): void {
   }
 

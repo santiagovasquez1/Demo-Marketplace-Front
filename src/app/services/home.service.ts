@@ -18,7 +18,7 @@ export class HomeService {
   }
 
   getAgents(): any {
-    const url = `${this.apiUrl}/get_agents`;
+    const url = `${this.apiUrl}/agents`;
     return this.http.get(url);
   }
 

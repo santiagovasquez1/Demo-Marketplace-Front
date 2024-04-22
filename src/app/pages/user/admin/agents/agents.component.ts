@@ -15,10 +15,11 @@ export class AgentsComponent implements OnInit{
   pageSize = 5;
   pageIndex = 0;
   pageSizeOptions = [5, 10, 25];
+  loading: boolean = true;
 
   param: string;
   pageEvent!: PageEvent;
-  userColumns: string[] = ['company_name', 'contact', 'location', 'email', 'agent_type', 'status', 'actions'];
+  userColumns: string[] = ['company_name', 'contact', 'location', 'email', 'agent_name', 'status', 'actions'];
   orderColumns: string[] = ['user_id', 'power', 'delivery', 'delivery_balance', 'action'];
   users: any;
   orders = [{
@@ -41,20 +42,22 @@ export class AgentsComponent implements OnInit{
       this.adminService.getUsers()
       .subscribe({
         next: (response: any) => {
+          this.loading = false;
           this.users = response.map((u:any) => {
             return {
               user_id: u.user_id,
               company_name: u.company_name,
               contact: u.contact,
-              location: "Antioquia", // TODO: Implementar el dato
+              location: `${u.regions}, ${u.cities}`, // TODO: Implementar el dato
               email: u.email,
-              agent_type: u.agent_id,
-              status: u.status
+              agent_name: u.agent_name,
+              status: u.status === 0  ? "Pendiente" : u.status === 1 ? "Aceptado" : "Rechazado"
             }
           } )
           console.log(response)
         },
         error : (error: any) => {
+          this.loading = false;
           console.error(error);
         }});
 
@@ -71,24 +74,27 @@ export class AgentsComponent implements OnInit{
 
 
   getUsers(){
+    this.loading = true;
         /** Busqueda de agentes en la base de datos */
         this.adminService.getUsers()
         .subscribe({
           next: (response: any) => {
+            this.loading = false;
             this.users = response.map((u:any) => {
               return {
                 user_id: u.user_id,
                 company_name: u.company_name,
                 contact: u.contact,
-                location: "Antioquia", // TODO: Implementar el dato
+                location: `${u.regions}, ${u.cities}`,
                 email: u.email,
-                agent_type: u.agent_id,
-                status: u.status
+                agent_name: u.agent_name,
+                status: u.status === 0  ? "Pendiente" : u.status === 1 ? "Aceptado" : "Rechazado"
               }
             } )
-            console.log(response)
+            console.log(this.users)
           },
           error : (error: any) => {
+            this.loading = false;
             console.error(error);
           }});
   }
@@ -96,13 +102,11 @@ export class AgentsComponent implements OnInit{
   updateUserStatusActive(id:number):any {
 
     let requestBody = {
-    
         user_id: id,
         status: 1
-      
     }
 
-    console.log(requestBody)
+    this.loading = true;
 
     this.adminService.updateUserStatus(requestBody)
     .subscribe({
@@ -110,6 +114,7 @@ export class AgentsComponent implements OnInit{
         this.getUsers();
       },
       error : (error: any) => {
+        this.loading = false;
         console.error(error);
       }});
   }
@@ -123,7 +128,7 @@ export class AgentsComponent implements OnInit{
       
   }
 
-    console.log(requestBody)
+    this.loading = true;
 
     this.adminService.updateUserStatus(requestBody)
     .subscribe({
@@ -132,6 +137,7 @@ export class AgentsComponent implements OnInit{
         console.log(response)
       },
       error : (error: any) => {
+        this.loading = false;
         console.error(error);
       }});
   }

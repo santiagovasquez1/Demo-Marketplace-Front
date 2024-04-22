@@ -9,8 +9,11 @@ import { environment } from '../../environments/environment';
 export class SignService {
 
   apiUrl = environment.enerchain_back_url;
+  token = localStorage.getItem("chainToken") || "";
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient
+  ) { }
 
   sendAgentData(body: any): any {
     const url = `${this.apiUrl}/users`;
@@ -18,7 +21,7 @@ export class SignService {
   }
 
   getAgents(): any {
-    const url = `${this.apiUrl}/get_agents`;
+    const url = `${this.apiUrl}/agents`;
     return this.http.get(url);
   }
 
@@ -32,8 +35,5 @@ export class SignService {
     return this.http.get(url);
   }
 
-  
-
-  
   
 }

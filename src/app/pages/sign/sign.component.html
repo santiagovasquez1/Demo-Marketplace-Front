@@ -1,12 +1,16 @@
 <app-spinner *ngIf="loading"></app-spinner>
 <div class="app-container">
-    <div class="logo-container">
+    <!-- <div class="logo-container">
       <img src="./assets/home/enerchain.svg" alt="Logo not found" height="80px">
     </div>
     <div>
-    </div>
-    <div style="margin-left: 20%; margin-right: 20%;">
-      <h1 class="main-title">Registro agente del mercado</h1>
+    </div> -->
+    
+      <div style="display: flex; flex-direction: row; align-items: flex-end; margin-top: 1rem;">
+        <img routerLink="/login" src="./assets/home/enerchain.svg" alt="Logo not found" height="80px" style="cursor:pointer">
+        <h1 class="main-title">Registro agente del mercado</h1>
+      </div>
+      <div style="margin-left: 20%; margin-right: 20%;">
         <form [formGroup]="createAgent" class="form-container" (ngSubmit)="onSubmit()">
           <!-- Tipos de agente -->
           <div class="grid-container">
@@ -16,7 +20,7 @@
               formControlName="agent_id"
               class="select-input"
               >
-                <option *ngFor="let agent of agent_types" value={{agent.id}}>{{agent.name}}</option>
+                <option *ngFor="let agent of agent_types" value={{agent.agent_id}}>{{agent.name}}</option>
               </select>
             </div>
           </div>

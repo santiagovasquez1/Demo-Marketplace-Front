@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { LoginService } from '../services/login.service';
 import { Route, Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
+
 
 @Component({
   selector: 'app-auth',
@@ -14,9 +16,9 @@ export class AuthComponent {
   loading: boolean = false;
 
   constructor(
-    private formBuilder: FormBuilder,
     private loginService : LoginService,
-    private router: Router
+    private router: Router,
+    private jwtHelper: JwtHelperService
   ){
       this.userInfo = new FormGroup({
         email: new FormControl(""),
@@ -43,7 +45,22 @@ export class AuthComponent {
         if(response.access_token) {
           this.loading = false;
           localStorage.setItem("chainToken", response.access_token)
-          this.router.navigate(["/admin/agent"]);
+          let token = this.jwtHelper.decodeToken(response.access_token)
+          console.log(token.sub.agent_id)
+
+          /** Condicionamiento de ruta inicial a redirigir */
+
+          switch(token.sub.agent_id){
+            case 5:
+              this.router.navigate(["/admin/agent"])
+              return
+            case 1: 
+              this.router.navigate(["/generator/plants"])
+              return
+            default:
+              return 
+          }
+         
         }
       },
       error : (error: any) => {

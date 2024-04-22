@@ -12,8 +12,10 @@ export const hasRoleGuard: CanActivateFn = (route, state) => {
 
   if(Boolean(allowedRoles.includes(helper.decodeToken(token).sub.agent_id))){
     return true;
-  }else{
-    return  router.parseUrl('/')
+  }
+  else
+  {
+    return  router.parseUrl('/?')
   }
   
 };

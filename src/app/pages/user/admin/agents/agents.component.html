@@ -1,4 +1,5 @@
-    <div style="display: flex; flex-direction: row; font-family: 'Montserrat';">
+<app-spinner *ngIf="loading"></app-spinner>
+   <div style="display: flex; flex-direction: row; font-family: 'Montserrat';">
         <!-- Modal de asignación de desapcho -->
         <div *ngIf="false" class="modal">
             <div class="modal-content">
@@ -95,9 +96,9 @@
                     <td mat-cell *matCellDef="let element"> {{element.email}} </td>
                     </ng-container>
             
-                    <ng-container matColumnDef="agent_type" >
+                    <ng-container matColumnDef="agent_name" >
                     <th mat-header-cell *matHeaderCellDef class="font-montserrat"> Tipo de agente </th>
-                    <td mat-cell *matCellDef="let element"> {{element.agent_type}} </td>
+                    <td mat-cell *matCellDef="let element"> {{element.agent_name}} </td>
                     </ng-container>
             
                     <ng-container matColumnDef="status">
@@ -108,15 +109,15 @@
                     <ng-container matColumnDef="actions">
                     <th mat-header-cell *matHeaderCellDef class="font-montserrat" style="border-top-right-radius: 0.5rem; border-bottom-right-radius: 0.5rem;"> Acciones </th>
                     <td mat-cell *matCellDef="let element"> 
-                        <div class="mat-icon-button-custom">
-                        <button mat-icon-button class="action-icon-green " (click)="updateUserStatusActive(element.user_id)"
-                        >
-                            <mat-icon style="color: white; font-size: 20px;">done</mat-icon>
-                        </button>
-                        <button mat-icon-button class="action-icon-red " (click)="updateUserStatusRejected(element.user_id)"
-                        >
-                            <mat-icon style="color:white; font-size: 20px;">close</mat-icon>
-                        </button>
+                        <div class="mat-icon-button-custom" style="display: flex;">
+                            <div class="action-icon-green" (click)="updateUserStatusActive(element.user_id)">
+                                <mat-icon style="color: white; font-size: 22px;">done</mat-icon>
+                            </div>
+                            
+                            <div class="action-icon-red" (click)="updateUserStatusRejected(element.user_id)">
+                                <mat-icon style="color: white; font-size: 22px;">close</mat-icon>
+                            </div>
+                       
                         </div>
                     </td>
                     </ng-container>

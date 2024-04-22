@@ -8,7 +8,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { provideHttpClient } from '@angular/common/http'; 
 import { withFetch } from '@angular/common/http';
-import { LoginComponent } from './pages/login/login.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { AngularMaterialModule } from './angular-material.module';
 import { AgentsComponent } from './pages/user/admin/agents/agents.component';
@@ -24,6 +23,15 @@ import { HeaderComponent } from './shared/header/header.component';
 import { AuthComponent } from './auth/auth.component';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { PaymentComponent } from './pages/user/admin/payment/payment.component';
+import { JwtModule } from '@auth0/angular-jwt';
+import { ModalComponent } from './shared/modal/modal.component';
+
+
+const JWT_Module_Options: any = {
+  config: {
+      tokenGetter: () => {}
+  }
+};
 
 @NgModule({
   declarations: [
@@ -35,17 +43,18 @@ import { PaymentComponent } from './pages/user/admin/payment/payment.component';
     PaymentComponent,
     AgentsComponent,
     OrdersComponent,
+    ModalComponent,
     NavGeneratorComponent,
     HeaderComponent,
     NavAdminComponent,
     UserComponent,
-    PlantsComponent,
-    LoginComponent
+    PlantsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MatExpansionModule,
+    JwtModule.forRoot(JWT_Module_Options),
     FormsModule,
     ReactiveFormsModule,
     AngularMaterialModule,

@@ -14,24 +14,7 @@ export class SignComponent implements OnInit {
 
   loading: boolean = true;
   createAgent!: FormGroup;
-  agent_types: any = [
-    {
-      id: "1",
-      name: "Generador"
-    },
-    {
-      id: "2",
-      name: "Comercializador"
-    },
-    {
-      id: "3",
-      name: "Transportador"
-    },
-    {
-      id: "4",
-      name: "Distribuidor"
-    }
-]
+  agent_types: any;
 
   regions: any;
   cities: any;
@@ -42,17 +25,14 @@ export class SignComponent implements OnInit {
     console.log("Starting sign-up component")
 
     /** Asignar lista de agentes disponibles */
-    // this.SignService.getAgents()
-    // .subscribe({
-    //   next: (response: any) => {
-    //     this.agent_types = response;
-    //     console.log(response)
-    //   },
-    //   error : (error: any) => {
-    //     console.error(error);
-    //   }});
+    this.signService.getAgents()
+    .subscribe({
+      next: (response: any) => {
+        
+        /** Filtro de tipos de agente diferentes al administrador */
+        this.agent_types = response.filter((agent:any) => agent.agent_id != 5);
 
-      /** Asignar regiones disponible */
+        /** Asignar regiones disponible */
       this.signService.getRegions()
       .subscribe({
         next: (response: any) => {
@@ -79,15 +59,19 @@ export class SignComponent implements OnInit {
           console.error(error);
         }});
 
+      },
+      error : (error: any) => {
+        console.error(error);
+      }});
+
   }
 
   constructor(
-    private formBuilder: FormBuilder,
     private signService : SignService,
     private router: Router
   ){
       this.createAgent = new FormGroup({
-        agent_id: new FormControl("1"),
+        agent_id: new FormControl(1),
         NIT: new FormControl(""),
         company_name: new FormControl(""),
         contact: new FormControl(""),

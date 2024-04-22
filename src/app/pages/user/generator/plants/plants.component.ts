@@ -1,12 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import {PageEvent, MatPaginatorModule} from '@angular/material/paginator';
+import { HomeService } from '../../../../services/home.service';
 
 @Component({
   selector: 'app-plants',
   templateUrl: './plants.component.html',
   styleUrl: './plants.component.sass'
 })
-export class PlantsComponent {
+export class PlantsComponent implements OnInit{
 
   length = 50;
   pageSize = 5;
@@ -14,6 +15,7 @@ export class PlantsComponent {
   pageSizeOptions = [5, 10, 25];
   createPlant: boolean = false;
   price: boolean = false;
+  modal: boolean = false;
   
 
   pageEvent!: PageEvent;
@@ -26,6 +28,21 @@ export class PlantsComponent {
     delivery: "1"
   }];
 
+
+  constructor(private homeService: HomeService){
+  }
+
+  ngOnInit(): void {
+    /** Busqueda de agentes en la base de datos */
+      this.homeService.getAgents()
+      .subscribe({
+        next: (response: any) => {
+          console.log(response)
+        },
+        error : (error: any) => {
+          console.error(error);
+        }});
+  }
 
   handlePageEvent(e: PageEvent) {
     this.pageEvent = e;
