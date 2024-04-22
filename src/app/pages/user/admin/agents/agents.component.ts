@@ -11,7 +11,7 @@ import { AdminService } from '../../../../services/admin.service';
 })
 export class AgentsComponent implements OnInit{
 
-  length = 50;
+  length = 0;
   pageSize = 5;
   pageIndex = 0;
   pageSizeOptions = [5, 10, 25];
@@ -43,6 +43,7 @@ export class AgentsComponent implements OnInit{
       .subscribe({
         next: (response: any) => {
           this.loading = false;
+          this.length = response.length;
           /** Validación para mostrar solo los usuarios generadores */
           this.users = response.filter((u:any) => u.agent_name === "Generador").map((u:any) => {
             return {
